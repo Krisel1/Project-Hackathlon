@@ -1,4 +1,7 @@
 package Repositories;
 
-public interface IDiseasesRepository {
+import Models.Diseases;
+import org.springframework.data.repository.CrudRepository;
+
+public interface IDiseasesRepository extends CrudRepository<Diseases, Long> {
 }
