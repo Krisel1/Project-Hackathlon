@@ -7,6 +7,7 @@ import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class DiseasesServices {
@@ -20,6 +21,13 @@ public class DiseasesServices {
    public Diseases createDiseases (Diseases newDiseases){
         return iDiseasesRepository.save(newDiseases);
    }
-
+public Optional<Diseases> upadateDiseases(Long id, Diseases diseasesDetail){
+        return iDiseasesRepository.findById(id)
+                .map(diseases -> {
+                   diseases.setName(diseasesDetail.getName());
+                   diseases.setDescription(diseasesDetail.getDescription());
+                   return iDiseasesRepository.save(diseases);
+                });
+}
 
 }
