@@ -22,7 +22,7 @@ public class DiseasesController {
 
     @DeleteMapping(path = "/diseases/{id}")
     public boolean deleteDiseases(@PathVariable Long id) {
-        return diseasesServices.deleteTask(id);
+        return diseasesServices.deleteDiseases(id);
     }
 
 }

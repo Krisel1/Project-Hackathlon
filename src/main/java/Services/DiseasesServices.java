@@ -17,9 +17,9 @@ public class DiseasesServices {
         return (ArrayList<Diseases>) iDiseasesRepository.findAll();
     }
 
-    public boolean deleteTask(Long id) {
-        Optional<Diseases> optionalTask = iDiseasesRepository.findById(id);
-        if (optionalTask.isPresent()) {
+    public boolean deleteDiseases(Long id) {
+        Optional<Diseases> optionalDiseases = iDiseasesRepository.findById(id);
+        if (optionalDiseases.isPresent()) {
             iDiseasesRepository.deleteById(id);
             return true;
         } else {
