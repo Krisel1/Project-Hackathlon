@@ -3,17 +3,16 @@ package Controller;
 import Models.Diseases;
 import Services.DiseasesServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class DiseasesController {
+
     @Autowired
     DiseasesServices diseasesServices;
 
@@ -22,5 +21,19 @@ public class DiseasesController {
         return diseasesServices.getAllDiseases();
     }
 
+    @DeleteMapping(path = "/diseases/{id}")
+    public boolean deleteDiseases(@PathVariable Long id) {
+        return diseasesServices.deleteDiseases(id);
+    }
+
+    @PostMapping(path = "/diseases")
+    public Diseases createDiseases(@RequestBody Diseases newDiseases){
+        return diseasesServices.createDiseases(newDiseases);
+    }
+
+    @PutMapping(path = "diseases/{id}")
+    public Optional<Diseases> updateDiseases(@PathVariable Long id, @RequestBody Diseases diseasesDetail) {
+        return diseasesServices.upadateDiseases(id, diseasesDetail);
+    }
 
 }
