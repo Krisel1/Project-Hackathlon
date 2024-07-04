@@ -14,7 +14,7 @@ public class Diseases {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TITLE", nullable = false)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @Column(name = "DESCRIPTION", length = 2000)
