@@ -5,11 +5,11 @@ The U-Breathe Project allows users with respiratory difficulties to check the po
 DiseasesApplication is an application designed to manage information about diseases through a REST API. It allows performing Create, Read, Update, and Delete (CRUD) operations on disease records. This application is built using Spring Boot for the backend and several key dependencies.
 
 ## Table of Contents
-- 
-- [Implemented Technologies](#Implemented Technologies)
-- [Main Features](#Main Features)
-- [Available Endpoints](#Available Endpoints)
-- [Frontend Connection](#Frontend Connection)
+
+- [Implemented Technologies](#implemented-technologies)
+- [Main Features](#main-features)
+- [Available Endpoints](#available-endpoints)
+- [Frontend Connection](#frontend-connection)
 
 
 ### Implemented Technologies
