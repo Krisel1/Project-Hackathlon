@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -23,6 +24,16 @@ public class DiseasesController {
     @DeleteMapping(path = "/diseases/{id}")
     public boolean deleteDiseases(@PathVariable Long id) {
         return diseasesServices.deleteDiseases(id);
+    }
+
+    @PostMapping(path = "/diseases")
+    public Diseases createDiseases(@RequestBody Diseases newDiseases){
+        return diseasesServices.createDiseases(newDiseases);
+    }
+
+    @PutMapping(path = "diseases/{id}")
+    public Optional<Diseases> updateDiseases(@PathVariable Long id, @RequestBody Diseases diseasesDetail) {
+        return diseasesServices.upadateDiseases(id, diseasesDetail);
     }
 
 }
