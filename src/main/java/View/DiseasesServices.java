@@ -1,4 +1,4 @@
-package Services;
+package View;
 
 public class DiseasesServices {
 }
