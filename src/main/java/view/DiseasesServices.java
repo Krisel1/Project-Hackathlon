@@ -1,7 +1,7 @@
-package Services;
+package view;
 
-import Models.Diseases;
-import Repositories.IDiseasesRepository;
+import models.Diseases;
+import repositories.IDiseasesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,6 @@ public class DiseasesServices {
     IDiseasesRepository iDiseasesRepository;
 
     public ArrayList<Diseases> getAllDiseases() {
-
         return (ArrayList<Diseases>) iDiseasesRepository.findAll();
     }
 
@@ -33,13 +32,16 @@ public class DiseasesServices {
         }
     }
 
-    public Optional<Diseases> upadateDiseases(Long id, Diseases diseasesDetail){
+    public Optional<Diseases> upadateDiseases(Long id, Diseases diseasesDetail) {
         return iDiseasesRepository.findById(id)
-                .map(diseases -> {
-                    diseases.setName(diseasesDetail.getName());
-                    diseases.setDescription(diseasesDetail.getDescription());
-                    return iDiseasesRepository.save(diseases);
+                .map(disease -> {
+                    disease.setName(diseasesDetail.getName());
+                    disease.setDescription(diseasesDetail.getDescription());
+                    return iDiseasesRepository.save(disease);
                 });
     }
 
+    public ArrayList<Diseases> findByName(String name) {
+        return iDiseasesRepository.findByName(name);
+    }
 }

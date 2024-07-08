@@ -1,8 +1,8 @@
 package com.ProjectHackathon.CrudDiseases;
 
-import Controller.DiseasesController;
-import Models.Diseases;
-import Services.DiseasesServices;
+import controller.DiseasesController;
+import models.Diseases;
+import view.DiseasesServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -56,9 +56,8 @@ public class DiseasesControllerTest {
         Long diseaseId = 1L;
         when(diseasesServices.deleteDiseases(diseaseId)).thenReturn(true);
 
-        boolean result = diseasesController.deleteDiseases(diseaseId);
+        diseasesController.deleteDiseases(diseaseId);
 
-        assertTrue(result);
         verify(diseasesServices, times(1)).deleteDiseases(diseaseId);
     }
 
@@ -74,6 +73,19 @@ public class DiseasesControllerTest {
 
         assertTrue(result.isPresent());
         verify(diseasesServices, times(1)).upadateDiseases(eq(diseaseId), any(Diseases.class));
+    }
+
+    @Test
+    void testFindByName() {
+        String name = "Influenza";
+        ArrayList<Diseases> diseasesList = new ArrayList<>();
+        when(diseasesServices.findByName(name)).thenReturn(diseasesList);
+
+        ArrayList<Diseases> result = diseasesController.findByName(name);
+
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+        verify(diseasesServices, times(1)).findByName(name);
     }
 
 }

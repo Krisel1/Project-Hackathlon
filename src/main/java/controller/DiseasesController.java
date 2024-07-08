@@ -1,7 +1,7 @@
-package Controller;
+package controller;
 
-import Models.Diseases;
-import Services.DiseasesServices;
+import models.Diseases;
+import view.DiseasesServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class DiseasesController {
 
@@ -21,9 +21,14 @@ public class DiseasesController {
         return diseasesServices.getAllDiseases();
     }
 
+    @GetMapping(path = "/diseases/search")
+    public ArrayList<Diseases> findByName(@RequestParam String name) {
+        return diseasesServices.findByName(name);
+    }
+
     @DeleteMapping(path = "/diseases/{id}")
-    public boolean deleteDiseases(@PathVariable Long id) {
-        return diseasesServices.deleteDiseases(id);
+    public void deleteDiseases(@PathVariable Long id) {
+        diseasesServices.deleteDiseases(id);
     }
 
     @PostMapping(path = "/diseases")
@@ -35,5 +40,4 @@ public class DiseasesController {
     public Optional<Diseases> updateDiseases(@PathVariable Long id, @RequestBody Diseases diseasesDetail) {
         return diseasesServices.upadateDiseases(id, diseasesDetail);
     }
-
 }
